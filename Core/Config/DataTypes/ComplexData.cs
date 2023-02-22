@@ -12,7 +12,7 @@ namespace ZeroXHUD.Core.Config.DataTypes
 	{
 		public List<int> ListOfInts = new List<int>();
 
-		public SimpleData nestedSimple = new SimpleData();
+		public SimpleData NestedSimple = new SimpleData();
 
 		[Range(2f, 3f)]
 		[Increment(.25f)]
@@ -22,13 +22,13 @@ namespace ZeroXHUD.Core.Config.DataTypes
 		public override bool Equals(object obj)
 		{
 			if (obj is ComplexData other)
-				return ListOfInts.SequenceEqual(other.ListOfInts) && IncrementalFloat == other.IncrementalFloat && nestedSimple.Equals(other.nestedSimple);
+				return ListOfInts.SequenceEqual(other.ListOfInts) && IncrementalFloat == other.IncrementalFloat && NestedSimple.Equals(other.NestedSimple);
 			return base.Equals(obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return new { ListOfInts, nestedSimple, IncrementalFloat }.GetHashCode();
+			return new { ListOfInts, nestedSimple = NestedSimple, IncrementalFloat }.GetHashCode();
 		}
 	}
 }

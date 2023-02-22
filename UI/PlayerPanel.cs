@@ -1,14 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.UI;
 using ZeroXHUD.Core.Config;
 using ZeroXHUD.Utils;
@@ -17,36 +12,31 @@ namespace ZeroXHUD.UI
 {
     internal class PlayerPanel : UIElement
     {
-        Player player;
-        Bar healthBar = new Bar();
-        Bar manaBar = new Bar();
+        private readonly Bar healthBar = new ();
+        private readonly Bar manaBar = new ();
 
-        UIHead playerHead = new UIHead();
-        UIText playerName = new UIText("AAAAAA", 1f);
-        UIText playerDeathCooldown = new UIText("AAAAAA", 1f);
+        private readonly UiHead playerHead = new ();
+        private readonly UIText playerName = new ("AAA-AAA");
+        private readonly UIText playerDeathCooldown = new ("AAA-AAA");
 
-        UIText label1 = new UIText("AAAAAA", 1f);
-        UIText label2 = new UIText("AAAAAA", 1f);
-        UIText label3 = new UIText("AAAAAA", 1f);
-        UIText label4 = new UIText("AAAAAA", 1f);
-        UIText label5 = new UIText("AAAAAA", 1f);
-        UIText label6 = new UIText("AAAAAA", 1f);
-        UIText label7 = new UIText("AAAAAA", 1f);
-        UIText label8 = new UIText("AAAAAA", 1f);
+        private readonly UIText label1 = new ("AAA-AAA");
+        private readonly UIText label2 = new ("AAA-AAA");
+        private readonly UIText label3 = new ("AAA-AAA");
+        private readonly UIText label4 = new ("AAA-AAA");
+        private readonly UIText label5 = new ("AAA-AAA");
+        private readonly UIText label6 = new("AAA-AAA");
+        private readonly UIText label7 = new ("AAA-AAA");
+        private readonly UIText label8 = new ("AAA-AAA");
 
 
-        public PlayerPanel(Player player)
+        public PlayerPanel()
         {
-            this.player = player;
-
             this.MinHeight.Set(60, 0);
             this.MinWidth.Set(200, 0);
         }
 
         public void UpdateValues(Player player)
         {
-            this.player = player;
-
             int life    = player.statLife;
             int maxLife = player.statLifeMax2;
 

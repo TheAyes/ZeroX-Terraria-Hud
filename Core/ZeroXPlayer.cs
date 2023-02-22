@@ -13,27 +13,24 @@ namespace ZeroXHUD.Core
 {
     public class ZeroXPlayer : ModPlayer
     {
-        public ZeroXPlayer()
+        private ZeroXPlayer()
         {
-            ZeroXHUD.InitializeModPlayer(this);
+            ZeroXhud.InitializeModPlayer(this);
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            var keybinds = ZeroXHUD.ModSystemInstance.Keybinds;
+            var keybinds = ZeroXhud.ModSystemInstance.Keybinds;
 
-            foreach (KeyValuePair<string, (ModKeybind, Action)> keybind in keybinds)
+            foreach (var keybind in keybinds.Where(keybind => keybind.Value.Item1.JustPressed))
             {
-                if (keybind.Value.Item1.JustPressed)
+                try
                 {
-                    try
-                    {
-                        keybind.Value.Item2?.Invoke();
-                    }
-                    catch
-                    {
-
-                    }
+                    keybind.Value.Item2?.Invoke();
+                }
+                catch
+                {
+                    // ignored
                 }
             }
         }

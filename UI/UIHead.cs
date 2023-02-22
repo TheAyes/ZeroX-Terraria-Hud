@@ -17,12 +17,12 @@ using Terraria.Graphics.Renderers;
 
 namespace ZeroXHUD.UI
 {
-    public class UIHead : UIElement
+    public class UiHead : UIElement
     {
         Color color = new Color(255, 255, 255);
         public int PlayerIndex { get; set; } = 0;
 
-        public bool isRendered;
+        public bool IsRendered;
 
         public override void Draw(SpriteBatch spriteBatch)
         {

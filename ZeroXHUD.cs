@@ -1,31 +1,19 @@
-using Terraria;
 using Terraria.ModLoader;
-using Terraria.UI;
 using ZeroXHUD.Core;
-using ZeroXHUD.Core.Config;
-using ZeroXHUD.UI;
 
 namespace ZeroXHUD
 {
-    public class ZeroXHUD : Mod
+    public class ZeroXhud : Mod
     {
-        public static ZeroXHUDSystem ModSystemInstance { get; set; }
-        public static ZeroXPlayer ModPlayerInstance { get; set; }
+        public static ZeroXhudSystem ModSystemInstance { get; private set; }
 
-        //public static ZeroXModConfig ModConfig { get => ModSystemInstance.Mod.GetConfig()}
-
-        public static void InitializeModSystem(ZeroXHUDSystem modSystem)
+        public static void InitializeModSystem(ZeroXhudSystem modSystem)
         {
             ModSystemInstance = modSystem;
         }
 
         public static void InitializeModPlayer(ZeroXPlayer modPlayer)
         {
-            ModPlayerInstance = modPlayer;
         }
-
-        public ZeroXHUD()
-        {
-        }    
     }
 }

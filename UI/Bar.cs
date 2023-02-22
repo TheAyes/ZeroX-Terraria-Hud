@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 
@@ -20,7 +15,7 @@ namespace ZeroXHUD.UI
         private Color textColor = Color.White;
         private Color textBorderColor = Color.Black;
         private string text1 = "";
-        private float value = 0.0f;
+        private float value;
 
         public Color FillColor { get => fillColor; set { fillColor = value; this.Refresh(); } }
         public Color BorderColor { get => borderColor; set { borderColor = value; this.Refresh(); } }
@@ -47,10 +42,7 @@ namespace ZeroXHUD.UI
             fill.Width.Set(0, Value);
             fill.MinWidth.Set(0, 0.1f);
 
-            if (Value < 0.01f)
-                fill.BackgroundColor = Color.Transparent;
-            else
-                fill.BackgroundColor = FillColor;
+            fill.BackgroundColor = Value < 0.01f ? Color.Transparent : FillColor;
 
             text.VAlign = 0.5f;
             text.HAlign = 0.1f;

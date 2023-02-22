@@ -1,22 +1,15 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Chat;
-using Terraria.GameContent.UI.Elements;
-using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.UI;
 using ZeroXHUD.Core.Config;
 
 namespace ZeroXHUD.UI
 {
-    public class ZeroXUI : UIState
+    public class ZeroXui : UIState
     {
-        List<PlayerPanel> playerPanels = new List<PlayerPanel>();
+        List<PlayerPanel> playerPanels = new ();
 
         public void Refresh()
         {
@@ -32,7 +25,7 @@ namespace ZeroXHUD.UI
                     }
                     catch
                     {
-
+                        // ignored
                     }
                 }
 
@@ -43,9 +36,9 @@ namespace ZeroXHUD.UI
                     RemoveAllChildren();
 
                     playerPanels = new List<PlayerPanel>();
-                    for (int i = 0; i < sameTeamPlayers.Count; i++)
+                    for (var i = 0; i < sameTeamPlayers.Count; i++)
                     {
-                        playerPanels.Add(new PlayerPanel(sameTeamPlayers[i]));
+                        playerPanels.Add(new PlayerPanel());
                     }
 
                     InitializePanels();
@@ -64,13 +57,13 @@ namespace ZeroXHUD.UI
                 {
                     PlayerPanel playerPanel = playerPanels[i];
 
-                    int Top = ZeroXModConfig.Instance.CombatPanel.VerticalOffset;
+                    var verticalOffset = ZeroXModConfig.Instance.CombatPanel.VerticalOffset;
                     if (ZeroXModConfig.Instance.CombatPanel.ShiftWithBuffs)
                     {
-                        Top  += 50 * level;
+                        verticalOffset  += 50 * level;
                     }
 
-                    playerPanel.Top.Set(Top + 72 * i, 0);
+                    playerPanel.Top.Set(verticalOffset + 72 * i, 0);
                     playerPanel.Left.Set(ZeroXModConfig.Instance.CombatPanel.HorizontalOffset, 0);
                 }
             } 
@@ -85,10 +78,8 @@ namespace ZeroXHUD.UI
 
         private void InitializePanels()
         {
-            for (int i = 0; i < playerPanels.Count; i++)
+            foreach (var playerPanel in playerPanels)
             {
-                
-                PlayerPanel playerPanel = playerPanels[i];
                 playerPanel.Activate();
                 Append(playerPanel);
             }

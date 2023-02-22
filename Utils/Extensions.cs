@@ -38,7 +38,7 @@ namespace ZeroXHUD.Utils
             {
                 LabelStatTypes.None => $"",
                 LabelStatTypes.Defense => $"DEF: {def:0.00}",
-                LabelStatTypes.DPS => $"DPS: {dps:0}",
+                LabelStatTypes.Dps => $"DPS: {dps:0}",
                 LabelStatTypes.ArmorPiercing => $"AP: {ap:0.00}",
                 LabelStatTypes.Speed => $"Speed: {speed:0.00}",
                 LabelStatTypes.Slow => $"Slow: {slow:0.00}",

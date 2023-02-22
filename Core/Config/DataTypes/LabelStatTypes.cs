@@ -17,7 +17,7 @@ namespace ZeroXHUD.Core.Config.DataTypes
 		Defense,
 
 		[Label("Damage per second")]
-		DPS,
+		Dps,
 
 		[Label("Armor piercing")]
 		ArmorPiercing,

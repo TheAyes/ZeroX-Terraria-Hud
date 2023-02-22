@@ -16,24 +16,24 @@ using ZeroXHUD.UI;
 
 namespace ZeroXHUD.Core
 {
-    public class ZeroXHUDSystem : ModSystem
+    public class ZeroXhudSystem : ModSystem
     {
         private UserInterface userInterface;
-        private ZeroXUI UI;
+        private ZeroXui ui;
 
         public Dictionary<string, (ModKeybind, Action)> Keybinds { get; set; } = new();
 
-        public ZeroXHUDSystem()
+        public ZeroXhudSystem()
         {
-            ZeroXHUD.InitializeModSystem(this);
+            ZeroXhud.InitializeModSystem(this);
         }
 
-        internal void ShowMyUI()
+        internal void ShowMyUi()
         {
-            userInterface?.SetState(UI);
+            userInterface?.SetState(ui);
         }
 
-        internal void HideMyUI()
+        internal void HideMyUi()
         {
             userInterface?.SetState(null);
         }
@@ -57,9 +57,9 @@ namespace ZeroXHUD.Core
             if (!Main.dedServ)
             {
                 userInterface = new UserInterface();
-                UI = new ZeroXUI();
+                ui = new ZeroXui();
 
-                UI.Activate();
+                ui.Activate();
             }
         }
 
@@ -75,7 +75,7 @@ namespace ZeroXHUD.Core
             }
         }
 
-        private GameTime _lastUpdateUiGameTime;
+        private GameTime lastUpdateUiGameTime;
         public override void UpdateUI(GameTime gameTime)
         {
             if(userInterface?.CurrentState != null)
@@ -83,7 +83,7 @@ namespace ZeroXHUD.Core
                 userInterface.Update(gameTime);
             }
 
-            _lastUpdateUiGameTime = gameTime;
+            lastUpdateUiGameTime = gameTime;
         }
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
@@ -94,9 +94,9 @@ namespace ZeroXHUD.Core
                     "MyMod: MyInterface",
                     delegate
                     {
-                        if (_lastUpdateUiGameTime != null && userInterface?.CurrentState != null)
+                        if (lastUpdateUiGameTime != null && userInterface?.CurrentState != null)
                         {
-                            userInterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+                            userInterface.Draw(Main.spriteBatch, lastUpdateUiGameTime);
                         }
                         return true;
                     },
@@ -110,18 +110,18 @@ namespace ZeroXHUD.Core
             {
                 if (!Main.playerInventory && globalHudVisibility)
                 {
-                    ShowMyUI();
+                    ShowMyUi();
                 }
                 else
                 {
-                    HideMyUI();
+                    HideMyUi();
                 }
 
                 if (userInterface?.CurrentState != null)
                 {
-                    if (UI != null)
+                    if (ui != null)
                     {
-                        UI.Refresh();
+                        ui.Refresh();
                     }
                 }
                 else

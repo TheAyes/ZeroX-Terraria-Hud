@@ -12,11 +12,11 @@ namespace ZeroXHUD.Core.Config.DataTypes
 	public class SimpleData
 	{
 		[Header("Awesome")]
-		public int boost;
-		public float percent;
+		public int Boost;
+		public float Percent;
 
 		[Header("Lame")]
-		public bool enabled;
+		public bool Enabled;
 
 		[DrawTicks]
 		[OptionStrings(new string[] { "Pikachu", "Charmander", "Bulbasaur", "Squirtle" })]
@@ -31,13 +31,13 @@ namespace ZeroXHUD.Core.Config.DataTypes
 		public override bool Equals(object obj)
 		{
 			if (obj is SimpleData other)
-				return boost == other.boost && percent == other.percent && enabled == other.enabled && FavoritePokemon == other.FavoritePokemon;
+				return Boost == other.Boost && Percent == other.Percent && Enabled == other.Enabled && FavoritePokemon == other.FavoritePokemon;
 			return base.Equals(obj);
 		}
 
 		public override int GetHashCode()
 		{
-			return new { boost, percent, enabled, FavoritePokemon }.GetHashCode();
+			return new { boost = Boost, percent = Percent, enabled = Enabled, FavoritePokemon }.GetHashCode();
 		}
 	}
 }

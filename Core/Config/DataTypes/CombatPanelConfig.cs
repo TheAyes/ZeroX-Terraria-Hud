@@ -47,7 +47,7 @@ namespace ZeroXHUD.Core.Config.DataTypes
         [DrawTicks]
         [Label("2nd label stat")]
         [DefaultValue(typeof(LabelStatTypes), "DPS")]
-        public LabelStatTypes Label2Stat { get; set; } = LabelStatTypes.DPS;
+        public LabelStatTypes Label2Stat { get; set; } = LabelStatTypes.Dps;
 
         [DrawTicks]
         [Label("3rd label stat")]
